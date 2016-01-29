@@ -13,6 +13,7 @@
 		682923881C5B0FAC0042ADA1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 682923861C5B0FAC0042ADA1 /* Main.storyboard */; };
 		6829238A1C5B0FAC0042ADA1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 682923891C5B0FAC0042ADA1 /* Assets.xcassets */; };
 		6829238D1C5B0FAC0042ADA1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6829238B1C5B0FAC0042ADA1 /* LaunchScreen.storyboard */; };
+		6829239D1C5B19A40042ADA1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6829239C1C5B19A40042ADA1 /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,10 @@
 		682923891C5B0FAC0042ADA1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6829238C1C5B0FAC0042ADA1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6829238E1C5B0FAC0042ADA1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		682923981C5B16C20042ADA1 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
+		682923991C5B16C30042ADA1 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
+		6829239A1C5B16C30042ADA1 /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Thin.ttf"; sourceTree = "<group>"; };
+		6829239C1C5B19A40042ADA1 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +61,51 @@
 		6829237F1C5B0FAC0042ADA1 /* OnTheMap */ = {
 			isa = PBXGroup;
 			children = (
-				682923801C5B0FAC0042ADA1 /* AppDelegate.swift */,
-				682923821C5B0FAC0042ADA1 /* FirstViewController.swift */,
-				682923841C5B0FAC0042ADA1 /* SecondViewController.swift */,
-				682923861C5B0FAC0042ADA1 /* Main.storyboard */,
-				682923891C5B0FAC0042ADA1 /* Assets.xcassets */,
-				6829238B1C5B0FAC0042ADA1 /* LaunchScreen.storyboard */,
-				6829238E1C5B0FAC0042ADA1 /* Info.plist */,
+				682923961C5B11B20042ADA1 /* Controllers */,
+				682923951C5B11A90042ADA1 /* Views */,
+				682923941C5B119E0042ADA1 /* Model */,
+				6829239B1C5B16D90042ADA1 /* Supporting Files */,
 			);
 			path = OnTheMap;
+			sourceTree = "<group>";
+		};
+		682923941C5B119E0042ADA1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				682923801C5B0FAC0042ADA1 /* AppDelegate.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		682923951C5B11A90042ADA1 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				682923861C5B0FAC0042ADA1 /* Main.storyboard */,
+				6829238B1C5B0FAC0042ADA1 /* LaunchScreen.storyboard */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		682923961C5B11B20042ADA1 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				682923821C5B0FAC0042ADA1 /* FirstViewController.swift */,
+				682923841C5B0FAC0042ADA1 /* SecondViewController.swift */,
+				6829239C1C5B19A40042ADA1 /* LoginViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		6829239B1C5B16D90042ADA1 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				682923891C5B0FAC0042ADA1 /* Assets.xcassets */,
+				6829238E1C5B0FAC0042ADA1 /* Info.plist */,
+				682923981C5B16C20042ADA1 /* Roboto-Medium.ttf */,
+				682923991C5B16C30042ADA1 /* Roboto-Regular.ttf */,
+				6829239A1C5B16C30042ADA1 /* Roboto-Thin.ttf */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,6 +180,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6829239D1C5B19A40042ADA1 /* LoginViewController.swift in Sources */,
 				682923851C5B0FAC0042ADA1 /* SecondViewController.swift in Sources */,
 				682923811C5B0FAC0042ADA1 /* AppDelegate.swift in Sources */,
 				682923831C5B0FAC0042ADA1 /* FirstViewController.swift in Sources */,
@@ -291,6 +333,7 @@
 				682923931C5B0FAC0042ADA1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
