@@ -11,6 +11,9 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
+    // MARK: Properties
+    
+    
     // Text fields
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -20,7 +23,9 @@ class LoginViewController: UIViewController {
     var keyboardAdjusted = false
     var lastKeyboardOffset : CGFloat = 0.0
     
+    
     // MARK: View Management
+    
     
     /* View did load */
     override func viewDidLoad() {
@@ -30,7 +35,6 @@ class LoginViewController: UIViewController {
         configViewUI()
     }
     
-    
     /* View will appear */
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -38,7 +42,6 @@ class LoginViewController: UIViewController {
         self.addKeyboardDismissRecognizer()
         self.subscribeToKeyboardNotifications()
     }
-    
     
     /* View will disappear */
     override func viewWillDisappear(animated: Bool) {
@@ -54,9 +57,14 @@ class LoginViewController: UIViewController {
     
     /* Login button pressed */
     @IBAction func login(sender: UIButton) {
-        //TODO: Login
+        RequestManager.sharedInstance().createSession(emailTextField.text, password: passwordTextField.text) { (success, error) -> Void in
+            if success {
+                print("Login Successful: \(RequestManager.sharedInstance().sessionID)")
+            } else {
+                print("Login Failed")
+            }
+        }
     }
-    
     
     /* Sign up button pressed */
     @IBAction func signUp(sender: UIButton) {
@@ -82,7 +90,6 @@ extension LoginViewController {
         tapRecognizer?.numberOfTapsRequired = 1
     }
     
-    
     /* Set ident view for text fields */
     private func setTextFieldIndent(textField: UITextField!) {
         let textFieldPadView = UIView(frame: CGRectMake(0,0,15, emailTextField.frame.height))
@@ -91,32 +98,26 @@ extension LoginViewController {
         textField.leftViewMode = UITextFieldViewMode.Always
     }
     
-    
     func addKeyboardDismissRecognizer() {
         self.view.addGestureRecognizer(tapRecognizer!)
     }
-    
     
     func removeKeyboardDismissRecognizer() {
         self.view.removeGestureRecognizer(tapRecognizer!)
     }
     
-    
     func handleSingleTap(recognizer: UITapGestureRecognizer) {
         self.view.endEditing(true)
     }
-    
     
     func subscribeToKeyboardNotifications() {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
     }
     
-    
     func unsubscribeToKeyboardNotifications() {
         NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)
     }
-    
     
     func keyboardWillShow(notification: NSNotification) {
         
@@ -127,15 +128,12 @@ extension LoginViewController {
         }
     }
     
-    
     func keyboardWillHide(notification: NSNotification) {
-        
         if keyboardAdjusted == true {
             self.view.superview?.frame.origin.y += lastKeyboardOffset
             keyboardAdjusted = false
         }
     }
-    
     
     func getKeyboardHeight(notification: NSNotification) -> CGFloat {
         let userInfo = notification.userInfo
