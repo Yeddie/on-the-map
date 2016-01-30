@@ -1,5 +1,5 @@
 //
-//  FirstViewController.swift
+//  MapListTableViewController.swift
 //  OnTheMap
 //
 //  Created by Eddie Groberski on 1/28/16.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FirstViewController: UIViewController {
+class MapListTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
