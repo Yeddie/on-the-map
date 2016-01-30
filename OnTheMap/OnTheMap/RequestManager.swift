@@ -16,8 +16,8 @@ import UIKit
 class RequestManager : NSObject {
     
     // MARK: Properties
-    var sessionID: String? = nil
     var session: NSURLSession
+    var sessionID: String? = nil
     
     
     // MARK: Initializers

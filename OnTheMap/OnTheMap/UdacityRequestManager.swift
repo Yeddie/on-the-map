@@ -9,8 +9,8 @@
 import Foundation
 
 
-extension RequestManager {
-    
+class UdacityRequestManager {
+
     // MARK: Constants
     struct Constants {
         static let BaseURL : String = "https://www.udacity.com/api/"
@@ -44,7 +44,7 @@ extension RequestManager {
     
     
     /* Create user session with username and password */
-    func createSession(username: String?, password: String?, completionHandler: (success: Bool, statusCode: Int?, error: NSError?) -> Void) {
+    class func createSession(username: String?, password: String?, completionHandler: (success: Bool, statusCode: Int?, error: NSError?) -> Void) {
         // GUARD: Username and password are not nil
         guard username != nil && username?.characters.count > 0 else { print("(createSession) - username is empty"); return }
         guard password != nil && password?.characters.count > 0 else { print("(createSession) - password is empty"); return }
@@ -62,7 +62,7 @@ extension RequestManager {
         }
         
         // Run post request
-        postRequest(request) { (result, statusCode, error) -> Void in
+        RequestManager.sharedInstance().postRequest(request) { (result, statusCode, error) -> Void in
             if let error = error {
                 completionHandler(success: false, statusCode:statusCode, error: error)
             } else {
@@ -78,7 +78,7 @@ extension RequestManager {
                 guard let returnedSessionId = results[JSONResponseKeys.Id] else { completionHandler(success: false, statusCode:statusCode, error: nil); return }
                 
                 // Save session id and finish completionHandler
-                self.sessionID = returnedSessionId
+                RequestManager.sharedInstance().sessionID = returnedSessionId
                 completionHandler(success: true, statusCode:statusCode, error: nil)
             }
         }
