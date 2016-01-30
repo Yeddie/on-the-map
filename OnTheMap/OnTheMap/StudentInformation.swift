@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 
 struct StudentInformation {
@@ -14,15 +15,16 @@ struct StudentInformation {
     // MARK: Properties
     
     
-    var objectId = ""
+    var objectId           = ""
     var uniqueKey: String? = nil
-    var firstName = ""
-    var lastName = ""
-    var mapString = ""
-    var latitude: Float = 0.0
-    var longitude: Float = 0.0
-    var createdAt = ""
-    var updatedAt = ""
+    var firstName          = ""
+    var lastName           = ""
+    var mapString          = ""
+    var mediaURL           = ""
+    var latitude: Float    = 0.0
+    var longitude: Float   = 0.0
+    var createdAt          = ""
+    var updatedAt          = ""
     
     
     // MARK: Initializers
@@ -35,9 +37,29 @@ struct StudentInformation {
         firstName = dictionary[ParseRequestManager.JSONResponseKeys.FirstName] as! String
         lastName  = dictionary[ParseRequestManager.JSONResponseKeys.LastName]  as! String
         mapString = dictionary[ParseRequestManager.JSONResponseKeys.MapString] as! String
+        mediaURL  = dictionary[ParseRequestManager.JSONResponseKeys.MediaURL]  as! String
         latitude  = dictionary[ParseRequestManager.JSONResponseKeys.Latitude]  as! Float
         longitude = dictionary[ParseRequestManager.JSONResponseKeys.Longitude] as! Float
         createdAt = dictionary[ParseRequestManager.JSONResponseKeys.CreatedAt] as! String
         updatedAt = dictionary[ParseRequestManager.JSONResponseKeys.UpdatedAt] as! String
+    }
+    
+    
+    // MARK: Helpers
+    
+    
+    /* Return full name with combination of first and last name */
+    func fullName() -> String {
+        return firstName + " " + lastName
+    }
+    
+    
+    /* Check if media url if valid */
+    func isUrlValid() -> (valid: Bool, url: NSURL?) {
+        if let url = NSURL(string: mediaURL) {
+            // Attempt to open url
+            return (UIApplication.sharedApplication().canOpenURL(url), url)
+        }
+        return (false, nil);
     }
 }

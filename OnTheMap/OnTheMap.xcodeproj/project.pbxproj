@@ -20,6 +20,7 @@
 		682BA9D41C5D435D00C89BD8 /* ParseRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682BA9D31C5D435D00C89BD8 /* ParseRequestManager.swift */; };
 		682BA9D61C5D473C00C89BD8 /* StudentInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682BA9D51C5D473C00C89BD8 /* StudentInformation.swift */; };
 		682BA9D81C5D4ED700C89BD8 /* StudentLocationDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682BA9D71C5D4ED700C89BD8 /* StudentLocationDataSource.swift */; };
+		682BA9DD1C5D78A500C89BD8 /* MapUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682BA9DC1C5D78A500C89BD8 /* MapUtils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,7 @@
 		682BA9D31C5D435D00C89BD8 /* ParseRequestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseRequestManager.swift; sourceTree = "<group>"; };
 		682BA9D51C5D473C00C89BD8 /* StudentInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentInformation.swift; sourceTree = "<group>"; };
 		682BA9D71C5D4ED700C89BD8 /* StudentLocationDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentLocationDataSource.swift; sourceTree = "<group>"; };
+		682BA9DC1C5D78A500C89BD8 /* MapUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapUtils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +91,7 @@
 				682BA9D91C5D505400C89BD8 /* StudentInformation */,
 				6829239E1C5C42910042ADA1 /* Requests */,
 				682923801C5B0FAC0042ADA1 /* AppDelegate.swift */,
+				682BA9DC1C5D78A500C89BD8 /* MapUtils.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -223,6 +226,7 @@
 				682BA9D41C5D435D00C89BD8 /* ParseRequestManager.swift in Sources */,
 				682923A41C5C47640042ADA1 /* UdacityRequestManager.swift in Sources */,
 				682923811C5B0FAC0042ADA1 /* AppDelegate.swift in Sources */,
+				682BA9DD1C5D78A500C89BD8 /* MapUtils.swift in Sources */,
 				682923831C5B0FAC0042ADA1 /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

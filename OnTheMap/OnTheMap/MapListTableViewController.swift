@@ -46,15 +46,57 @@ class MapListTableViewController: UITableViewController {
                     }
                 }
             } else {
-                // There was an issue with the webservice so we display pop up
-                let alert = UIAlertController(title: "Network Issue", message: "Could not download student records", preferredStyle: UIAlertControllerStyle.Alert)
-                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
-                
-                dispatch_async(dispatch_get_main_queue()) {
-                    // Present AlertViewController
-                    self.presentViewController(alert, animated: true, completion: nil)
-                }
+                // There was an issue with the webservice so we display alert
+                MapUtils.presentAlertViewController(self, title: MapUtils.AlertTitles.NetworkIssue, message: MapUtils.AlertMessages.CouldNotDowloadRecords)
             }
+        }
+    }
+    
+    /* Student Information at given index path */
+    private func studentInformationAtIndexPath(indexPath: NSIndexPath) -> StudentInformation {
+        return dataSource.students[indexPath.row]
+    }
+    
+    
+    // MARK: UITable View Delegate
+    
+    
+    /* Count of datasource students */
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return dataSource.students.count
+    }
+    
+    /* Cell for index path with StudentInformation record  information */
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        // Get cell
+        let cellReuseIdentifier = "studentReuseId"
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellReuseIdentifier) as UITableViewCell!
+        
+        // Set cell information
+        let studentInformation = studentInformationAtIndexPath(indexPath)
+        cell.textLabel!.text = studentInformation.fullName()
+        cell.imageView!.image = UIImage(named: "pin")
+        cell.imageView!.contentMode = UIViewContentMode.ScaleAspectFit
+        
+        return cell
+    }
+    
+    /* Cell selected, try to open safari with link */
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        // Deselect the row to get rid of highlist
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        
+        // Get StudentInformation for row
+        let studentInformation = studentInformationAtIndexPath(indexPath)
+    
+        // Check if url is valid
+        let mediaUrl = studentInformation.isUrlValid()
+        if mediaUrl.valid {
+            // Open safari with link
+            UIApplication.sharedApplication().openURL(mediaUrl.url!)
+        } else {
+            // Present Alert - URL invalid
+            MapUtils.presentAlertViewController(self, title: MapUtils.AlertTitles.NetworkIssue, message: MapUtils.AlertMessages.InvalidUrl)
         }
     }
 }

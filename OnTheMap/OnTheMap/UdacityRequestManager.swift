@@ -13,7 +13,7 @@ class UdacityRequestManager {
 
     // MARK: Constants
     struct Constants {
-        static let BaseURL : String = "https://www.udacity.com/api/"
+        static let BaseURL = "https://www.udacity.com/api/"
     }
     
     
@@ -25,7 +25,7 @@ class UdacityRequestManager {
 
     // MARK: Parameter Keys
     struct ParameterKeys {
-        static let Udacity = "udacity"
+        static let Udacity  = "udacity"
         static let Username = "username"
         static let Password = "password"
     }
@@ -34,8 +34,8 @@ class UdacityRequestManager {
     // MARK: JSON Response Keys
     struct JSONResponseKeys {
         // Session Method
-        static let Session = "session"
-        static let Id = "id"
+        static let Session    = "session"
+        static let Id         = "id"
         static let Expiration = "expiration"
     }
 

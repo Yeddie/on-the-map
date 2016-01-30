@@ -88,25 +88,21 @@ class LoginViewController: UIViewController {
     /* Login was unsuccessful */
     func failedLogin(statusCode: Int?, error: NSError?) {
         print("Login Failed: \(statusCode)")
-
-        var alertMessage: String = "Unknown Error"
+        
+        let alertTitle = MapUtils.AlertTitles.NetworkIssue
+        var alertMessage = MapUtils.AlertMessages.UnknowError
         if let error = error {
             if error.code == -1009 {
-                alertMessage = "No internet connectivity"
+                alertMessage = MapUtils.AlertMessages.NoInternet
             }
         } else if let statusCode = statusCode {
             if statusCode == 403 {
-                alertMessage = "Wrong Username or Password"
+                alertMessage = MapUtils.AlertMessages.WrongCredientials
             }
         }
-        
-        let alert = UIAlertController(title: "Issue logging in", message: alertMessage, preferredStyle: UIAlertControllerStyle.Alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
-        
-        dispatch_async(dispatch_get_main_queue()) {
-            // Present AlertViewController
-            self.presentViewController(alert, animated: true, completion: nil)
-        }
+
+        // Show alert
+        MapUtils.presentAlertViewController(self, title: alertTitle, message: alertMessage)
     }
 }
 
