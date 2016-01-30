@@ -77,6 +77,10 @@ class LoginViewController: UIViewController {
     
     func successfulLogin() {
         print("Login Successful: \(RequestManager.sharedInstance().sessionID)")
+        dispatch_async(dispatch_get_main_queue(), {
+            let controller = self.storyboard!.instantiateViewControllerWithIdentifier("MapTabBarController") as! UITabBarController
+            self.presentViewController(controller, animated: true, completion: nil)
+        })
     }
     
     
