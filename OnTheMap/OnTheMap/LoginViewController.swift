@@ -57,11 +57,11 @@ class LoginViewController: UIViewController {
     
     /* Login button pressed */
     @IBAction func login(sender: UIButton) {
-        RequestManager.sharedInstance().createSession(emailTextField.text, password: passwordTextField.text) { (success, error) -> Void in
+        RequestManager.sharedInstance().createSession(emailTextField.text, password: passwordTextField.text) { (success, statusCode, error) -> Void in
             if success {
-                print("Login Successful: \(RequestManager.sharedInstance().sessionID)")
+                self.successfulLogin()
             } else {
-                print("Login Failed")
+                self.failedLogin(statusCode, error: error)
             }
         }
     }
@@ -71,6 +71,37 @@ class LoginViewController: UIViewController {
         // Send user to Udacity's sign up page
         UIApplication.sharedApplication().openURL(NSURL(string: "https://www.udacity.com/account/auth#!/signin")!)
     }
+    
+    
+    // MARK: Login Managment
+    
+    func successfulLogin() {
+        print("Login Successful: \(RequestManager.sharedInstance().sessionID)")
+    }
+    
+    
+    func failedLogin(statusCode: Int?, error: NSError?) {
+        print("Login Failed: \(statusCode)")
+
+        var alertMessage: String = "Unknown Error"
+        if let error = error {
+            if error.code == -1009 {
+                alertMessage = "No internet connectivity"
+            }
+        } else if let statusCode = statusCode {
+            if statusCode == 403 {
+                alertMessage = "Wrong Username or Password"
+            }
+        }
+        
+        let alert = UIAlertController(title: "Issue logging in", message: alertMessage, preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+        
+        dispatch_async(dispatch_get_main_queue()) {
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
+    }
+
 }
 
 
