@@ -75,15 +75,18 @@ class LoginViewController: UIViewController {
     
     // MARK: Login Managment
     
+    
+    /* Login was successful */
     func successfulLogin() {
         print("Login Successful: \(RequestManager.sharedInstance().sessionID)")
         dispatch_async(dispatch_get_main_queue(), {
+            // Present MapTabBarController
             let controller = self.storyboard!.instantiateViewControllerWithIdentifier("MapTabBarController") as! UITabBarController
             self.presentViewController(controller, animated: true, completion: nil)
         })
     }
     
-    
+    /* Login was unsuccessful */
     func failedLogin(statusCode: Int?, error: NSError?) {
         print("Login Failed: \(statusCode)")
 
@@ -102,10 +105,10 @@ class LoginViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
         
         dispatch_async(dispatch_get_main_queue()) {
+            // Present AlertViewController
             self.presentViewController(alert, animated: true, completion: nil)
         }
     }
-
 }
 
 
