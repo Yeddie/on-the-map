@@ -52,14 +52,4 @@ struct StudentInformation {
     func fullName() -> String {
         return firstName + " " + lastName
     }
-    
-    
-    /* Check if media url if valid */
-    func isUrlValid() -> (valid: Bool, url: NSURL?) {
-        if let url = NSURL(string: mediaURL) {
-            // Attempt to open url
-            return (UIApplication.sharedApplication().canOpenURL(url), url)
-        }
-        return (false, nil);
-    }
 }

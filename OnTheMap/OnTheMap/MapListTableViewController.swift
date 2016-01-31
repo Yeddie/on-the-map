@@ -88,16 +88,9 @@ class MapListTableViewController: UITableViewController {
         
         // Get StudentInformation for row
         let studentInformation = studentInformationAtIndexPath(indexPath)
-    
-        // Check if url is valid
-        let mediaUrl = studentInformation.isUrlValid()
-        if mediaUrl.valid {
-            // Open safari with link
-            UIApplication.sharedApplication().openURL(mediaUrl.url!)
-        } else {
-            // Present Alert - URL invalid
-            MapUtils.presentAlertViewController(self, title: MapUtils.AlertTitles.NetworkIssue, message: MapUtils.AlertMessages.InvalidUrl)
-        }
+        
+        // Check if valid url and open safari
+        MapUtils.openUrlIfValid(studentInformation.mediaURL, viewController: self)
     }
 }
 

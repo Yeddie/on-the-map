@@ -40,4 +40,24 @@ class MapUtils {
         }
     }
     
+    
+    // MARK: URL Methods
+    
+    
+    /* Check if given url is valid and open safari */
+    class func openUrlIfValid(url: String!, viewController: UIViewController!) {
+        if let url = NSURL(string: url) {
+            
+            // Attempt to open url
+            let canOpenUrl = UIApplication.sharedApplication().canOpenURL(url)
+            
+            if canOpenUrl {
+                // Open safari with link
+                UIApplication.sharedApplication().openURL(url)
+            } else {
+                // Present Alert - URL invalid
+                MapUtils.presentAlertViewController(viewController, title: MapUtils.AlertTitles.NetworkIssue, message: MapUtils.AlertMessages.InvalidUrl)
+            }
+        }
+    }
 }

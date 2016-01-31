@@ -46,6 +46,9 @@
                             <barButtonItem image="pin" id="O2r-59-Mev"/>
                         </rightBarButtonItems>
                     </navigationItem>
+                    <connections>
+                        <outlet property="mapView" destination="Da4-xf-h8y" id="5cV-lD-85G"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
