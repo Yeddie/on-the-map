@@ -15,7 +15,7 @@ class MapListTableViewController: UITableViewController {
     
     let dataSource = StudentInformationDataSource()
 
-    
+
     // MARK: View Management
     
     /* View did load */
@@ -91,6 +91,23 @@ class MapListTableViewController: UITableViewController {
         
         // Check if valid url and open safari
         MapUtils.openUrlIfValid(studentInformation.mediaURL, viewController: self)
+    }
+    
+    
+    // MARK: Button Actions
+    
+    
+    /* Refresh button pressed, reload data */
+    @IBAction func refreshButtonPushed(sender: UIBarButtonItem) {
+        loadDataSource()
+    }
+    
+    /* Add pin button pressed, create new pin */
+    @IBAction func addPinButtonPressed(sender: UIBarButtonItem) {
+    }
+    
+    /* Logout button pressed, log user out */
+    @IBAction func logoutButtonPressed(sender: UIBarButtonItem) {
     }
 }
 

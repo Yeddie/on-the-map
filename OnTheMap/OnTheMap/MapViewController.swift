@@ -84,8 +84,26 @@ class MapViewController: UIViewController {
             annotations.append(annotation)
         }
         
-        // Add annotations to map view
+        // Clear existing annotations and then add new annotations to map view
+        mapView.removeAnnotations(mapView.annotations)
         mapView.addAnnotations(annotations)
+    }
+    
+    
+    // MARK: Button Actions
+    
+    
+    /* Refresh button pressed, reload data */
+    @IBAction func refreshButtonPressed(sender: UIBarButtonItem) {
+        loadDataSource()
+    }
+    
+    /* Add pin button pressed, create new pin */
+    @IBAction func addPinButtonPressed(sender: UIBarButtonItem) {
+    }
+    
+    /* Logout button pressed, log user out */
+    @IBAction func logoutButtonPressed(sender: UIBarButtonItem) {
     }
 }
 

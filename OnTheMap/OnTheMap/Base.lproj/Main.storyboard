@@ -40,10 +40,22 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="On The Map" id="rMm-MN-JrC">
-                        <barButtonItem key="leftBarButtonItem" title="Logout" id="qLA-Lk-0YY"/>
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="qLA-Lk-0YY">
+                            <connections>
+                                <action selector="logoutButtonPressed:" destination="9pv-A4-QxB" id="XdN-Yh-fXx"/>
+                            </connections>
+                        </barButtonItem>
                         <rightBarButtonItems>
-                            <barButtonItem systemItem="refresh" id="Hfm-e6-ps6"/>
-                            <barButtonItem image="pin" id="O2r-59-Mev"/>
+                            <barButtonItem systemItem="refresh" id="Hfm-e6-ps6">
+                                <connections>
+                                    <action selector="refreshButtonPressed:" destination="9pv-A4-QxB" id="aJj-ZX-wcy"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="pin" id="O2r-59-Mev">
+                                <connections>
+                                    <action selector="addPinButtonPressed:" destination="9pv-A4-QxB" id="C4m-6z-kAD"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
@@ -246,10 +258,22 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="On The Map" id="RdE-43-51g">
-                        <barButtonItem key="leftBarButtonItem" title="Logout" id="ght-yX-Gus"/>
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="ght-yX-Gus">
+                            <connections>
+                                <action selector="logoutButtonPressed:" destination="dC3-fn-NJw" id="zPF-PB-xEa"/>
+                            </connections>
+                        </barButtonItem>
                         <rightBarButtonItems>
-                            <barButtonItem systemItem="refresh" id="OVc-eA-ggK"/>
-                            <barButtonItem image="pin" id="wtE-cv-Ta3"/>
+                            <barButtonItem systemItem="refresh" id="OVc-eA-ggK">
+                                <connections>
+                                    <action selector="refreshButtonPushed:" destination="dC3-fn-NJw" id="fcl-fa-U2V"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="pin" id="wtE-cv-Ta3">
+                                <connections>
+                                    <action selector="addPinButtonPressed:" destination="dC3-fn-NJw" id="F7P-ln-9us"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                 </tableViewController>
