@@ -83,4 +83,41 @@ class UdacityRequestManager {
             }
         }
     }
+    
+    /* Logout user of current session */
+    class func logoutUser(completionHandler: (success: Bool, statusCode: Int?, error: NSError?) -> Void) {
+        // Create request
+        let request = NSMutableURLRequest(URL: NSURL(string: Constants.BaseURL + Methods.Session)!)
+        request.HTTPMethod = "DELETE"
+        var xsrfCookie: NSHTTPCookie? = nil
+        let sharedCookieStorage = NSHTTPCookieStorage.sharedHTTPCookieStorage()
+        for cookie in sharedCookieStorage.cookies! {
+            if cookie.name == "XSRF-TOKEN" { xsrfCookie = cookie }
+        }
+        if let xsrfCookie = xsrfCookie {
+            request.setValue(xsrfCookie.value, forHTTPHeaderField: "X-XSRF-TOKEN")
+        }
+        
+        // Run post request
+        RequestManager.sharedInstance().postRequest(request) { (result, statusCode, error) -> Void in
+            if let error = error {
+                completionHandler(success: false, statusCode:statusCode, error: error)
+            } else {
+                // GUARD: Check results contain session information
+                guard let result = result else {
+                    completionHandler(success: false, statusCode:statusCode, error: nil); return
+                }
+                
+                guard let results = result[JSONResponseKeys.Session] as? [String: String] else {
+                    completionHandler(success: false, statusCode:statusCode, error: nil); return
+                }
+                
+                guard let _ = results[JSONResponseKeys.Id] else { completionHandler(success: false, statusCode:statusCode, error: nil); return }
+                
+                // Save session id and finish completionHandler
+                RequestManager.sharedInstance().sessionID = nil
+                completionHandler(success: true, statusCode:statusCode, error: nil)
+            }
+        }
+    }
 }

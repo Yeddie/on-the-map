@@ -104,6 +104,15 @@ class MapViewController: UIViewController {
     
     /* Logout button pressed, log user out */
     @IBAction func logoutButtonPressed(sender: UIBarButtonItem) {
+        UdacityRequestManager.logoutUser { (success, statusCode, error) -> Void in
+            if success {
+                dispatch_async(dispatch_get_main_queue()) {
+                    self.dismissViewControllerAnimated(true, completion: nil)
+                }
+            } else {
+                MapUtils.presentAlertViewController(self, title: MapUtils.AlertTitles.NetworkIssue, message: MapUtils.AlertMessages.LogOutError)
+            }
+        }
     }
 }
 

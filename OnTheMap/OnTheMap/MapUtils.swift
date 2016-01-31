@@ -24,6 +24,7 @@ class MapUtils {
         static let WrongCredientials      = "Wrong Username or Password"
         static let CouldNotDowloadRecords = "Could not download student records"
         static let InvalidUrl             = "Invalid URL"
+        static let LogOutError            = "Could not log user out"
     }
     
     

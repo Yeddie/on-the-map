@@ -79,6 +79,10 @@ class LoginViewController: UIViewController {
     /* Login was successful */
     func successfulLogin() {
         dispatch_async(dispatch_get_main_queue(), {
+            // Clear email and password fields
+            self.emailTextField.text = ""
+            self.passwordTextField.text = ""
+            
             // Present MapTabBarController
             let controller = self.storyboard!.instantiateViewControllerWithIdentifier("MapTabBarController") as! UITabBarController
             self.presentViewController(controller, animated: true, completion: nil)
