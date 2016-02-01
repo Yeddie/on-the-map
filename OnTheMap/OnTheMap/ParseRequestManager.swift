@@ -63,7 +63,7 @@ class ParseRequestManager {
         let request = createParseRequest(url)
         
         // Run GET request
-        RequestManager.sharedInstance().getRequest(request) { (result, statusCode, error) -> Void in
+        RequestManager.sharedInstance().getRequest(false, request: request) { (result, statusCode, error) -> Void in
             if let error = error {
                 completionHandler(success: false, result: result, statusCode: statusCode, error: error)
             } else {

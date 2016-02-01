@@ -18,6 +18,9 @@ class RequestManager : NSObject {
     // MARK: Properties
     var session: NSURLSession
     var sessionID: String? = nil
+    var accountId: String? = nil
+    var firstName: String? = nil
+    var lastName: String? = nil
     
     
     // MARK: Initializers
@@ -73,7 +76,7 @@ class RequestManager : NSObject {
     
     
     /* Run GET request */
-    func getRequest(request: NSURLRequest, completionHandler: (result: AnyObject!, statusCode: Int?, error: NSError?) -> Void) -> NSURLSessionDataTask {
+    func getRequest(trimData: Bool, request: NSURLRequest, completionHandler: (result: AnyObject!, statusCode: Int?, error: NSError?) -> Void) -> NSURLSessionDataTask {
         // Make request
         let task = session.dataTaskWithRequest(request) { (data, response, error) in
             
@@ -81,7 +84,7 @@ class RequestManager : NSObject {
             guard (error == nil) else { completionHandler(result: data, statusCode: 0, error: error); print("Request - Error: \(error)"); return }
             
             // GUARD: Check if data was returned
-            guard let data = data else { print("Request - No Data"); return }
+            guard var data = data else { print("Request - No Data"); return }
             
             /* GUARD: Did we get a successful 2XX response? */
             guard let statusCode = (response as? NSHTTPURLResponse)?.statusCode where statusCode >= 200 && statusCode <= 299 else {
@@ -94,6 +97,11 @@ class RequestManager : NSObject {
                     print("Your request returned an invalid response!")
                 }
                 return
+            }
+            
+            // Skip 5 characters from Udacity response
+            if trimData {
+                data = data.subdataWithRange(NSMakeRange(5, data.length - 5))
             }
             
             // Parse data and send to completion handler

@@ -37,9 +37,15 @@ class LoginViewController: BaseViewController {
     
     /* Login button pressed */
     @IBAction func login(sender: UIButton) {
-        UdacityRequestManager.createSession(emailTextField.text, password: passwordTextField.text) { (success, statusCode, error) -> Void in
+        UdacityRequestManager.createSession(emailTextField.text, password: passwordTextField.text) { (success, userId, statusCode, error) -> Void in
             if success {
-                self.successfulLogin()
+                UdacityRequestManager.getStudentInformation(userId, completionHandler: { (success, result, statusCode, error) -> Void in
+                    if success {
+                        self.successfulLogin()
+                    } else {
+                        self.failedLogin(statusCode, error: error)
+                    }
+                })
             } else {
                 self.failedLogin(statusCode, error: error)
             }
