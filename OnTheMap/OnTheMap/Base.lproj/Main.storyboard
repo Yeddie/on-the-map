@@ -12,6 +12,10 @@
             <string>Roboto-Regular</string>
             <string>Roboto-Regular</string>
             <string>Roboto-Regular</string>
+            <string>Roboto-Regular</string>
+            <string>Roboto-Regular</string>
+            <string>Roboto-Regular</string>
+            <string>Roboto-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -54,6 +58,7 @@
                             <barButtonItem image="pin" id="O2r-59-Mev">
                                 <connections>
                                     <action selector="addPinButtonPressed:" destination="9pv-A4-QxB" id="C4m-6z-kAD"/>
+                                    <segue destination="utd-rN-38L" kind="modal" id="ibB-pE-T0g"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
@@ -65,6 +70,91 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="932" y="-303"/>
+        </scene>
+        <!--Create Student Information View Controller-->
+        <scene sceneID="ynJ-cO-zJu">
+            <objects>
+                <viewController id="utd-rN-38L" customClass="CreateStudentInformationViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Zla-Ds-EOc"/>
+                        <viewControllerLayoutGuide type="bottom" id="Fe5-xp-ar5"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="MTd-Ev-sb1">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Where are you studying today?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AXu-F1-rou">
+                                <rect key="frame" x="20" y="68" width="280" height="59"/>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="25"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="justified" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QT8-0F-R3S">
+                                <rect key="frame" x="10" y="137" width="300" height="50"/>
+                                <color key="backgroundColor" red="1" green="0.77942179" blue="0.39024489540000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="B6W-ma-vWn"/>
+                                </constraints>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                            </textField>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="aLu-0u-X9X">
+                                <rect key="frame" x="0.0" y="195" width="320" height="373"/>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jof-R0-sEr">
+                                <rect key="frame" x="10" y="508" width="300" height="50"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Cdx-tl-VpY"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="25"/>
+                                <state key="normal" title="Find on the Map">
+                                    <color key="titleColor" red="0.98823529409999999" green="0.62745098040000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="submitButtonPressed:" destination="utd-rN-38L" eventType="touchUpInside" id="ng6-3N-i14"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N1f-5b-Xe0">
+                                <rect key="frame" x="10" y="30" width="46" height="30"/>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancelButtonPressed:" destination="utd-rN-38L" eventType="touchUpInside" id="on4-Ar-ZKG"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.98823529409999999" green="0.62745098040000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="Fe5-xp-ar5" firstAttribute="top" secondItem="jof-R0-sEr" secondAttribute="bottom" constant="10" id="0Kc-bt-3zC"/>
+                            <constraint firstItem="aLu-0u-X9X" firstAttribute="top" secondItem="QT8-0F-R3S" secondAttribute="bottom" constant="8" id="4vd-mW-q6T"/>
+                            <constraint firstItem="AXu-F1-rou" firstAttribute="leading" secondItem="MTd-Ev-sb1" secondAttribute="leading" constant="20" id="BMT-iZ-1fA"/>
+                            <constraint firstItem="aLu-0u-X9X" firstAttribute="leading" secondItem="MTd-Ev-sb1" secondAttribute="leading" id="Hhz-EI-rW4"/>
+                            <constraint firstAttribute="trailing" secondItem="QT8-0F-R3S" secondAttribute="trailing" constant="10" id="JAd-HN-xoQ"/>
+                            <constraint firstItem="AXu-F1-rou" firstAttribute="top" secondItem="N1f-5b-Xe0" secondAttribute="bottom" constant="8" id="KU1-oa-9VD"/>
+                            <constraint firstItem="jof-R0-sEr" firstAttribute="leading" secondItem="MTd-Ev-sb1" secondAttribute="leading" constant="10" id="MuN-p1-JJN"/>
+                            <constraint firstItem="QT8-0F-R3S" firstAttribute="centerX" secondItem="MTd-Ev-sb1" secondAttribute="centerX" id="TFQ-RT-yBa"/>
+                            <constraint firstItem="QT8-0F-R3S" firstAttribute="leading" secondItem="MTd-Ev-sb1" secondAttribute="leading" constant="10" id="VVf-cP-RGg"/>
+                            <constraint firstItem="QT8-0F-R3S" firstAttribute="top" secondItem="AXu-F1-rou" secondAttribute="bottom" constant="10" id="abO-AU-68V"/>
+                            <constraint firstItem="Fe5-xp-ar5" firstAttribute="top" secondItem="aLu-0u-X9X" secondAttribute="bottom" id="kph-3i-2zn"/>
+                            <constraint firstAttribute="trailing" secondItem="AXu-F1-rou" secondAttribute="trailing" constant="20" id="lMI-Zy-swi"/>
+                            <constraint firstAttribute="trailing" secondItem="aLu-0u-X9X" secondAttribute="trailing" id="nj4-DM-adU"/>
+                            <constraint firstItem="AXu-F1-rou" firstAttribute="centerX" secondItem="MTd-Ev-sb1" secondAttribute="centerX" id="o6H-Tt-4Ph"/>
+                            <constraint firstAttribute="trailing" secondItem="jof-R0-sEr" secondAttribute="trailing" constant="10" id="tgm-vD-61l"/>
+                            <constraint firstItem="N1f-5b-Xe0" firstAttribute="top" secondItem="Zla-Ds-EOc" secondAttribute="bottom" constant="10" id="xlg-88-8P8"/>
+                            <constraint firstItem="N1f-5b-Xe0" firstAttribute="leading" secondItem="MTd-Ev-sb1" secondAttribute="leading" constant="10" id="zWP-WH-ejG"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="locationTextField" destination="QT8-0F-R3S" id="svg-Zv-cgs"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OdW-5f-juW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1567" y="0.0"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="kRE-Yc-G6h">
@@ -175,7 +265,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gYy-X9-XSo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-374" y="14"/>
+            <point key="canvasLocation" x="-700" y="0.0"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -194,7 +284,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="0.0" y="0.0"/>
+            <point key="canvasLocation" x="-198" y="0.0"/>
         </scene>
         <!--Map-->
         <scene sceneID="Afz-JT-Z1Q">
@@ -272,6 +362,7 @@
                             <barButtonItem image="pin" id="wtE-cv-Ta3">
                                 <connections>
                                     <action selector="addPinButtonPressed:" destination="dC3-fn-NJw" id="F7P-ln-9us"/>
+                                    <segue destination="utd-rN-38L" kind="modal" id="HkX-FA-o4Y"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
@@ -288,4 +379,7 @@
         <image name="pin" width="32" height="32"/>
         <image name="udacity" width="256" height="256"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="ibB-pE-T0g"/>
+    </inferredMetricsTieBreakers>
 </document>

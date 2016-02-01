@@ -61,4 +61,16 @@ class MapUtils {
             }
         }
     }
+    
+    
+    // MARK: Text Field Methods
+    
+    
+    /* Set ident view for text fields */
+    class func setTextFieldIndent(textField: UITextField!) {
+        let textFieldPadView = UIView(frame: CGRectMake(0,0,15, textField.frame.height))
+        
+        textField.leftView = textFieldPadView
+        textField.leftViewMode = UITextFieldViewMode.Always
+    }
 }
