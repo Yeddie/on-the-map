@@ -31,7 +31,7 @@ class ParseRequestManager {
         static let ParseAppId = "X-Parse-Application-Id"
         static let RestApiKey = "X-Parse-REST-API-Key"
         static let Limit      = "limit"
-        static let Order      = "-order"
+        static let Order      = "order"
     }
     
     
