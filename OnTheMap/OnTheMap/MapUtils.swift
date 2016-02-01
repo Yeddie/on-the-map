@@ -13,6 +13,7 @@ class MapUtils {
     
     // MARK: Alert Title
     struct AlertTitles {
+        static let LocationIssue = "Location Issue"
         static let NetworkIssue  = "Network Issue"
     }
     
@@ -25,6 +26,8 @@ class MapUtils {
         static let CouldNotDowloadRecords = "Could not download student records"
         static let InvalidUrl             = "Invalid URL"
         static let LogOutError            = "Could not log user out"
+        static let NoAddress              = "Please enter an address"
+        static let AddressError           = "Could not find address"
     }
     
     

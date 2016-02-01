@@ -15,7 +15,6 @@
             <string>Roboto-Regular</string>
             <string>Roboto-Regular</string>
             <string>Roboto-Regular</string>
-            <string>Roboto-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -108,7 +107,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Cdx-tl-VpY"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="25"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
                                 <state key="normal" title="Find on the Map">
                                     <color key="titleColor" red="0.98823529409999999" green="0.62745098040000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -150,6 +149,9 @@
                     </view>
                     <connections>
                         <outlet property="locationTextField" destination="QT8-0F-R3S" id="svg-Zv-cgs"/>
+                        <outlet property="mapView" destination="aLu-0u-X9X" id="fhI-52-Pyi"/>
+                        <outlet property="questionLabel" destination="AXu-F1-rou" id="JZC-Ot-Ux5"/>
+                        <outlet property="submitButton" destination="jof-R0-sEr" id="sBb-sf-lYn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OdW-5f-juW" userLabel="First Responder" sceneMemberID="firstResponder"/>
