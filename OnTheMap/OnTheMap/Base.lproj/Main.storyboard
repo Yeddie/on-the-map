@@ -82,6 +82,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N1f-5b-Xe0">
+                                <rect key="frame" x="10" y="30" width="46" height="30"/>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancelButtonPressed:" destination="utd-rN-38L" eventType="touchUpInside" id="on4-Ar-ZKG"/>
+                                </connections>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Where are you studying today?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AXu-F1-rou">
                                 <rect key="frame" x="20" y="68" width="280" height="59"/>
                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="25"/>
@@ -98,9 +108,31 @@
                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                             </textField>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="aLu-0u-X9X">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4SN-bk-uKA">
                                 <rect key="frame" x="0.0" y="195" width="320" height="373"/>
-                            </mapView>
+                                <subviews>
+                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="aLu-0u-X9X">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="373"/>
+                                    </mapView>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="t7c-Yt-cKZ">
+                                        <rect key="frame" x="125" y="152" width="70" height="70"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="70" id="JFN-Fh-FhF"/>
+                                            <constraint firstAttribute="height" constant="70" id="zBn-3l-aD8"/>
+                                        </constraints>
+                                        <color key="color" red="0.98823529409999999" green="0.62745098040000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="t7c-Yt-cKZ" firstAttribute="centerX" secondItem="4SN-bk-uKA" secondAttribute="centerX" id="2FH-qS-WjD"/>
+                                    <constraint firstAttribute="trailing" secondItem="aLu-0u-X9X" secondAttribute="trailing" id="Hvz-Jn-If1"/>
+                                    <constraint firstItem="aLu-0u-X9X" firstAttribute="leading" secondItem="4SN-bk-uKA" secondAttribute="leading" id="PEh-FH-kBB"/>
+                                    <constraint firstAttribute="bottom" secondItem="aLu-0u-X9X" secondAttribute="bottom" id="QjO-Vx-Kqh"/>
+                                    <constraint firstItem="t7c-Yt-cKZ" firstAttribute="centerY" secondItem="4SN-bk-uKA" secondAttribute="centerY" id="fb9-ar-iN8"/>
+                                    <constraint firstItem="aLu-0u-X9X" firstAttribute="top" secondItem="4SN-bk-uKA" secondAttribute="top" id="kbZ-ZQ-e7g"/>
+                                </constraints>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jof-R0-sEr">
                                 <rect key="frame" x="10" y="508" width="300" height="50"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -115,32 +147,22 @@
                                     <action selector="submitButtonPressed:" destination="utd-rN-38L" eventType="touchUpInside" id="ng6-3N-i14"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N1f-5b-Xe0">
-                                <rect key="frame" x="10" y="30" width="46" height="30"/>
-                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
-                                <state key="normal" title="Cancel">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="cancelButtonPressed:" destination="utd-rN-38L" eventType="touchUpInside" id="on4-Ar-ZKG"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.98823529409999999" green="0.62745098040000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="Fe5-xp-ar5" firstAttribute="top" secondItem="jof-R0-sEr" secondAttribute="bottom" constant="10" id="0Kc-bt-3zC"/>
-                            <constraint firstItem="aLu-0u-X9X" firstAttribute="top" secondItem="QT8-0F-R3S" secondAttribute="bottom" constant="8" id="4vd-mW-q6T"/>
                             <constraint firstItem="AXu-F1-rou" firstAttribute="leading" secondItem="MTd-Ev-sb1" secondAttribute="leading" constant="20" id="BMT-iZ-1fA"/>
-                            <constraint firstItem="aLu-0u-X9X" firstAttribute="leading" secondItem="MTd-Ev-sb1" secondAttribute="leading" id="Hhz-EI-rW4"/>
+                            <constraint firstItem="4SN-bk-uKA" firstAttribute="leading" secondItem="MTd-Ev-sb1" secondAttribute="leading" id="GVx-Vc-waQ"/>
                             <constraint firstAttribute="trailing" secondItem="QT8-0F-R3S" secondAttribute="trailing" constant="10" id="JAd-HN-xoQ"/>
                             <constraint firstItem="AXu-F1-rou" firstAttribute="top" secondItem="N1f-5b-Xe0" secondAttribute="bottom" constant="8" id="KU1-oa-9VD"/>
                             <constraint firstItem="jof-R0-sEr" firstAttribute="leading" secondItem="MTd-Ev-sb1" secondAttribute="leading" constant="10" id="MuN-p1-JJN"/>
+                            <constraint firstAttribute="trailing" secondItem="4SN-bk-uKA" secondAttribute="trailing" id="NIS-m8-h65"/>
                             <constraint firstItem="QT8-0F-R3S" firstAttribute="centerX" secondItem="MTd-Ev-sb1" secondAttribute="centerX" id="TFQ-RT-yBa"/>
                             <constraint firstItem="QT8-0F-R3S" firstAttribute="leading" secondItem="MTd-Ev-sb1" secondAttribute="leading" constant="10" id="VVf-cP-RGg"/>
                             <constraint firstItem="QT8-0F-R3S" firstAttribute="top" secondItem="AXu-F1-rou" secondAttribute="bottom" constant="10" id="abO-AU-68V"/>
-                            <constraint firstItem="Fe5-xp-ar5" firstAttribute="top" secondItem="aLu-0u-X9X" secondAttribute="bottom" id="kph-3i-2zn"/>
+                            <constraint firstItem="Fe5-xp-ar5" firstAttribute="top" secondItem="4SN-bk-uKA" secondAttribute="bottom" id="dm0-78-9bv"/>
+                            <constraint firstItem="4SN-bk-uKA" firstAttribute="top" secondItem="QT8-0F-R3S" secondAttribute="bottom" constant="8" id="fDT-Ad-cEg"/>
                             <constraint firstAttribute="trailing" secondItem="AXu-F1-rou" secondAttribute="trailing" constant="20" id="lMI-Zy-swi"/>
-                            <constraint firstAttribute="trailing" secondItem="aLu-0u-X9X" secondAttribute="trailing" id="nj4-DM-adU"/>
                             <constraint firstItem="AXu-F1-rou" firstAttribute="centerX" secondItem="MTd-Ev-sb1" secondAttribute="centerX" id="o6H-Tt-4Ph"/>
                             <constraint firstAttribute="trailing" secondItem="jof-R0-sEr" secondAttribute="trailing" constant="10" id="tgm-vD-61l"/>
                             <constraint firstItem="N1f-5b-Xe0" firstAttribute="top" secondItem="Zla-Ds-EOc" secondAttribute="bottom" constant="10" id="xlg-88-8P8"/>
@@ -148,6 +170,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="t7c-Yt-cKZ" id="VkY-S2-vK5"/>
                         <outlet property="locationTextField" destination="QT8-0F-R3S" id="svg-Zv-cgs"/>
                         <outlet property="mapView" destination="aLu-0u-X9X" id="fhI-52-Pyi"/>
                         <outlet property="questionLabel" destination="AXu-F1-rou" id="JZC-Ot-Ux5"/>

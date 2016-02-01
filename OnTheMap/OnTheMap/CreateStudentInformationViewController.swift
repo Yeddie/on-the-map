@@ -19,6 +19,7 @@ class CreateStudentInformationViewController: BaseViewController {
     @IBOutlet weak var locationTextField: UITextField!
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var submitButton: UIButton!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     let geocoder = CLGeocoder()
     var studentInformation = StudentInformation()
@@ -37,6 +38,8 @@ class CreateStudentInformationViewController: BaseViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        activityIndicator.alpha = 0.0
         if addressSuccess {
             updateUI()
         }
@@ -88,8 +91,12 @@ class CreateStudentInformationViewController: BaseViewController {
     
     /* Create geocoder and zoom map */
     func createGeocoder(address: String!) {
+        activityIndicator.alpha = 1.0
+        activityIndicator.startAnimating()
         guard address != nil && address.characters.count > 0 else {
             MapUtils.presentAlertViewController(self, title: MapUtils.AlertTitles.LocationIssue, message: MapUtils.AlertMessages.NoAddress)
+            activityIndicator.alpha = 0.0
+            activityIndicator.stopAnimating()
             return
         }
 
@@ -128,6 +135,9 @@ class CreateStudentInformationViewController: BaseViewController {
                 
                 // Update UI
                 self.updateUI()
+                
+                self.activityIndicator.alpha = 0.0
+                self.activityIndicator.stopAnimating()
             } else {
                 MapUtils.presentAlertViewController(self, title: MapUtils.AlertTitles.LocationIssue, message: MapUtils.AlertMessages.AddressError)
             }
