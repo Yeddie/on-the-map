@@ -69,7 +69,7 @@ class UdacityRequestManager {
         }
         
         // Run post request
-        RequestManager.sharedInstance().postRequest(request) { (result, statusCode, error) -> Void in
+        RequestManager.sharedInstance().postRequest(true, request: request) { (result, statusCode, error) -> Void in
             if let error = error {
                 completionHandler(success: false, userId: nil, statusCode:statusCode, error: error)
             } else {
@@ -124,7 +124,7 @@ class UdacityRequestManager {
                 
                 RequestManager.sharedInstance().firstName = firstName
                 
-                guard let lastName = user[JSONResponseKeys.FirstName] as? String else {
+                guard let lastName = user[JSONResponseKeys.LastName] as? String else {
                     completionHandler(success: false, result: nil, statusCode:statusCode, error: nil); return
                 }
                 
@@ -152,7 +152,7 @@ class UdacityRequestManager {
         }
         
         // Run post request
-        RequestManager.sharedInstance().postRequest(request) { (result, statusCode, error) -> Void in
+        RequestManager.sharedInstance().postRequest(true, request: request) { (result, statusCode, error) -> Void in
             if let error = error {
                 completionHandler(success: false, statusCode:statusCode, error: error)
             } else {

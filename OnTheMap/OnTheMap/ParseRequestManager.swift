@@ -83,6 +83,39 @@ class ParseRequestManager {
     }
     
     
+    // MARK: Post Request
+    
+    
+    /* Create user session with username and password */
+    class func submitStudentLocation(studentInformation: StudentInformation!, completionHandler: (success: Bool, statusCode: Int?, error: NSError?) -> Void) {
+        // Create request
+        let request = createParseRequest(NSURL(string: Constants.BaseURL)!)
+        request.HTTPMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        // Create parameters and add to HTTPBody
+        do {
+            request.HTTPBody = try! NSJSONSerialization.dataWithJSONObject(studentInformation.dictionaryOfStudentInformation(), options: .PrettyPrinted)
+        }
+        
+        // Run post request
+        RequestManager.sharedInstance().postRequest(false, request: request) { (result, statusCode, error) -> Void in
+            if let error = error {
+                completionHandler(success: false, statusCode:statusCode, error: error)
+            } else {
+                // GUARD: Check results contain session information
+                guard let result = result else {
+                    completionHandler(success: false, statusCode:statusCode, error: nil); return
+                }
+                
+                print("submitStudentLocation = \(result)")
+
+                completionHandler(success: true, statusCode:statusCode, error: nil)
+            }
+        }
+    }
+    
+    
     //MARK: Helper methods
     
     

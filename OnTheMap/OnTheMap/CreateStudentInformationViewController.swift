@@ -69,8 +69,17 @@ class CreateStudentInformationViewController: BaseViewController {
             MapUtils.presentAlertViewController(self, title: MapUtils.AlertTitles.LocationIssue, message: MapUtils.AlertMessages.InvalidUrl)
             return
         }
+        
         studentInformation.mediaURL = url
-
+        
+        // Send user information to server
+        ParseRequestManager.submitStudentLocation(studentInformation) { (success, statusCode, error) -> Void in
+            if success {
+                self.dismissViewControllerAnimated(true, completion: nil)
+            } else {
+                MapUtils.presentAlertViewController(self, title: MapUtils.AlertTitles.NetworkIssue, message: MapUtils.AlertMessages.SubmissionError)
+            }
+        }
     }
     
     
@@ -113,6 +122,9 @@ class CreateStudentInformationViewController: BaseViewController {
                 self.studentInformation.mapString = placemark.name!
                 self.studentInformation.latitude = Float(latitude)
                 self.studentInformation.longitude = Float(longitude)
+                self.studentInformation.firstName = RequestManager.sharedInstance().firstName!
+                self.studentInformation.lastName = RequestManager.sharedInstance().lastName!
+                self.studentInformation.uniqueKey = RequestManager.sharedInstance().accountId!
                 
                 // Update UI
                 self.updateUI()

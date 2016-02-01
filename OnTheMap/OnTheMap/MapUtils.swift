@@ -28,6 +28,7 @@ class MapUtils {
         static let LogOutError            = "Could not log user out"
         static let NoAddress              = "Please enter an address"
         static let AddressError           = "Could not find address"
+        static let SubmissionError        = "Could not submit location"
     }
     
     

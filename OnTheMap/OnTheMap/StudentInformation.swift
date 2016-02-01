@@ -55,4 +55,19 @@ struct StudentInformation {
     func fullName() -> String {
         return firstName + " " + lastName
     }
+    
+    /* Return dictionary of student information for web service */
+    func dictionaryOfStudentInformation() -> [String: AnyObject] {
+        let dict: [String: AnyObject] = [
+            ParseRequestManager.JSONResponseKeys.UniqueKey: uniqueKey!,
+            ParseRequestManager.JSONResponseKeys.FirstName: firstName,
+            ParseRequestManager.JSONResponseKeys.LastName: lastName,
+            ParseRequestManager.JSONResponseKeys.MapString: mapString,
+            ParseRequestManager.JSONResponseKeys.MediaURL: mediaURL,
+            ParseRequestManager.JSONResponseKeys.Latitude:latitude,
+            ParseRequestManager.JSONResponseKeys.Longitude: longitude
+        ]
+        
+        return dict
+    }
 }
